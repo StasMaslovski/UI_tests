@@ -1,15 +1,22 @@
 from .pages.main_page import MainPage
+from .pages.login_page import LoginPage
+
+MAIN_URL = "http://selenium1py.pythonanywhere.com/"
 
 
 def test_guest_can_go_to_login_page(browser):
-    link = "http://selenium1py.pythonanywhere.com/"
+    link = MAIN_URL
     page = MainPage(browser, link)  # create exemplar of MainPage class
     page.open()
     page.go_to_login_page()
+    login_page = LoginPage(browser, browser.current_url)
+    login_page.should_be_login_url()
+    login_page.should_be_login_form()
+    login_page.should_be_register_form()
 
 
 def test_guest_should_see_login_link(browser):
-    link = "http://selenium1py.pythonanywhere.com/"
+    link = MAIN_URL
     page = MainPage(browser, link)
     page.open()
     page.should_be_login_link()

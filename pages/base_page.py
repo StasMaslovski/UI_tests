@@ -10,6 +10,10 @@ class BasePage:
     def open(self):
         self.browser.get(self.url)
 
+    def get_current_url(self):
+        current_url = self.browser.current_url
+        return current_url
+
     def is_element_present(self, how, what):
         try:
             self.browser.find_element(how, what)
