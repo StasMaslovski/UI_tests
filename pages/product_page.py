@@ -1,6 +1,5 @@
 from .base_page import BasePage
 from .locators import ItemPageLocators
-from .locators import CartPageLocators
 from selenium.common.exceptions import NoAlertPresentException
 import math
 
@@ -19,14 +18,20 @@ class ProductPage(BasePage):
     def get_price_from_item_page(self):
         return self.get_value(*ItemPageLocators.ITEM_PAGE_PRICE)
 
-    def get_price_from_cart_page(self):
-        return self.get_value(*CartPageLocators.CART_PAGE_PRICE)
+    def get_price_from_the_message(self):
+        return self.get_value(*ItemPageLocators.PRICE_IN_THE_MESSAGE)
 
     def get_item_name_on_the_item_page(self):
         return self.get_value(*ItemPageLocators.ITEM_NAME)
 
-    def get_item_name_on_the_cart_page(self):
-        return self.get_value(*CartPageLocators.ITEM_NAME_IN_THE_CART)
+    def get_item_name_from_the_message(self):
+        return self.get_value(*ItemPageLocators.ITEM_NAME_IN_THE_MESSAGE)
+
+    def is_not_success_message(self):
+        assert self.is_not_element_present(*ItemPageLocators.SUCCESS_MESSAGE)
+
+    def success_message_is_disappeared(self):
+        assert self.is_disappeared(*ItemPageLocators.SUCCESS_MESSAGE)
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
@@ -41,3 +46,9 @@ class ProductPage(BasePage):
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
+
+    # def should_not_be_success_message(self):
+    #     assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+    #         "Success message is presented, but should not be"
+
+
