@@ -33,6 +33,9 @@ class ProductPage(BasePage):
     def success_message_is_disappeared(self):
         assert self.is_disappeared(*ItemPageLocators.SUCCESS_MESSAGE)
 
+    def should_be_empty_basket(self):
+        assert "Ваша корзина пуста" in self.get_value(*ItemPageLocators.MESSAGE_EMPTY_BASKET)
+
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
         x = alert.text.split(" ")[2]

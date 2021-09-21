@@ -1,6 +1,10 @@
 from selenium.webdriver.common.by import By
 
 
+class MainPageLocators:
+    BASKET_BTN = (By.CSS_SELECTOR, '.btn-group > .btn:nth-child(1)')
+
+
 class BasePageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
@@ -29,3 +33,5 @@ class ItemPageLocators:
     PRICE_IN_THE_MESSAGE = (By.CSS_SELECTOR, '.alertinner > p > strong')
     ITEM_NAME_IN_THE_MESSAGE = (By.CSS_SELECTOR, '#messages > .alert:nth-child(1) > .alertinner > strong')
     SUCCESS_MESSAGE = (By.CSS_SELECTOR, '.alert:nth-child(1) > .alertinner')
+
+    MESSAGE_EMPTY_BASKET = (By.CSS_SELECTOR, '#content_inner > p')
