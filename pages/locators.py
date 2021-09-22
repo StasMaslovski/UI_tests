@@ -35,3 +35,4 @@ class ItemPageLocators:
     SUCCESS_MESSAGE = (By.CSS_SELECTOR, '.alert:nth-child(1) > .alertinner')
 
     MESSAGE_EMPTY_BASKET = (By.CSS_SELECTOR, '#content_inner > p')
+    ITEM_IN_THE_BASKET = (By.CSS_SELECTOR, '.thumbnail')
