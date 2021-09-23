@@ -22,7 +22,8 @@ class BasePage:
         login_link.click()
 
     def should_be_login_link(self):
-        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), \
+            "Login link is not presented"
 
     def click_on_the_btn(self, how, what):
         self.browser.find_element(how, what).click()
@@ -30,8 +31,12 @@ class BasePage:
     def get_value(self, how, what):
         return self.browser.find_element(how, what).text
 
+    def go_to_the_basket_page(self):
+        self.click_on_the_btn(*BasePageLocators.BASKET_BTN)
+
     def comparing_values(self, value1, value2):
-        assert value1 == value2, 'values is not equal'
+        assert value1 == value2, \
+            'values is not equal'
 
     def is_element_present(self, how, what):
         try:

@@ -1,6 +1,7 @@
 from .pages.main_page import MainPage
 from .pages.login_page import LoginPage
 from .pages.product_page import ProductPage
+from .pages.basket_page import BasketPage
 
 MAIN_URL = "http://selenium1py.pythonanywhere.com/"
 
@@ -33,7 +34,7 @@ def test_go_to_basket_page_from_main_page(browser):
     page = MainPage(browser, link)
     page.open()
     page.go_from_main_page_to_basket_page()
-    page = ProductPage(browser, link)
+    page = BasketPage(browser, link)
     page.there_is_no_item_in_the_basket()
     page.should_be_empty_basket()
 

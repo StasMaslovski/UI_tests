@@ -9,7 +9,7 @@ class ProductPage(BasePage):
         assert self.is_element_present(
             *ItemPageLocators.WRITE_REVIEW), 'button "write review" is not present on the page'
 
-    def should_be_item_page(self):
+    def should_be_item_cart(self):
         assert 'catalogue' in self.get_current_url(), 'this is not excepted page'
 
     def add_item_to_the_cart(self):
@@ -31,13 +31,7 @@ class ProductPage(BasePage):
         assert self.is_not_element_present(*ItemPageLocators.SUCCESS_MESSAGE)
 
     def success_message_is_disappeared(self):
-        assert self.is_disappeared(*ItemPageLocators.SUCCESS_MESSAGE)
-
-    def should_be_empty_basket(self):
-        assert "Ваша корзина пуста" in self.get_value(*ItemPageLocators.MESSAGE_EMPTY_BASKET)
-
-    def there_is_no_item_in_the_basket(self):
-        assert self.is_not_element_present(*ItemPageLocators.ITEM_IN_THE_BASKET)
+        assert self.is_disappeared(*ItemPageLocators.SUCCESS_MESSAGE), "There is success message, but not should be"
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
@@ -56,5 +50,3 @@ class ProductPage(BasePage):
     # def should_not_be_success_message(self):
     #     assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
     #         "Success message is presented, but should not be"
-
-
