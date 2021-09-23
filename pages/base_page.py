@@ -25,6 +25,9 @@ class BasePage:
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), \
             "Login link is not presented"
 
+    def fill_the_form(self, how, what, message):
+        self.browser.find_element(how, what).send_keys(message)
+
     def click_on_the_btn(self, how, what):
         self.browser.find_element(how, what).click()
 
@@ -37,6 +40,10 @@ class BasePage:
     def comparing_values(self, value1, value2):
         assert value1 == value2, \
             'values is not equal'
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                     " probably unauthorised user"
 
     def is_element_present(self, how, what):
         try:
