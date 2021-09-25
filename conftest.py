@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-import time
+
 
 def pytest_addoption(parser):
     parser.addoption('--browser_name', action='store', default="chrome",
@@ -12,7 +12,6 @@ def pytest_addoption(parser):
 @pytest.fixture(scope="function")
 def browser(request):
     browser_name = request.config.getoption("browser_name")
-    browser = None
     if browser_name == "chrome":
         print("\nstart chrome browser for test..")
         options = Options()
