@@ -6,7 +6,8 @@ from selenium.webdriver.chrome.options import Options
 @pytest.fixture(scope="function")
 def browser():
     options = Options()
-    browser = webdriver.Chrome()
+    options.headless = True
+    browser = webdriver.Chrome(options=options)
     yield browser
     print("\nquit browser..")
     browser.quit()
